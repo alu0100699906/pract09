@@ -1,0 +1,20 @@
+def initialize (col, fil, N, *tuplas) 	#N es el numero de elementos no nulos
+										#tuplas trataremos los datos asi: (3,0,1),(1,2,4),(5,4,6)...(2,6,7),(2,8,6)
+										# donde agrupamos de tres en tres,(v,i,j) v= valor, i=fila, j=columna
+	@columnas = col
+	@filas = fil
+	
+	V = Array.new(N)
+	I = Array.new(N)
+	J = Array.new(N)
+	
+	ind = 0
+	while (ind < (3*N))
+		V[ind]=tuplas[ind]   #almacena el valor no nulo
+		I[ind]=tuplas[ind+1] # posicion filas de dicho elemento
+		J[ind]=tuplas[ind+2] # posicion columnas de dicho elemento
+		
+		ind += 3	#vamos al siguiente trio v i j
+	end
+	
+end

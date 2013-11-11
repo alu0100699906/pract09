@@ -1,29 +1,31 @@
 # Prac09
 
-TODO: Write a gem description
+La Gema Prac09 consta de clases que nos permiten crear, gestionar y trabajar, de manera distinta, con matrices densas y matrices dispersas. 
 
-## Installation
+Como dato, cabe añadir que una matriz se considerará dispersa si tiene más de un 60% de ceros.
 
-Add this line to your application's Gemfile:
+## Instalación
+
+Añade esta línea al Gemfile de tu aplicación:
 
     gem 'prac09'
 
-And then execute:
+Luego ejecuta:
 
     $ bundle
 
-Or install it yourself as:
+O instálalo tú mismo de esta forma:
 
     $ gem install prac09
 
-## Usage
+## Uso
 
-TODO: Write usage instructions here
+Si quieres usar esta gema en tu aplicación Ruby, incluye el fichero "pract09"
 
-## Contributing
+## Contribución
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+1. Haz un fork
+2. Crea tu rama de características (`git checkout -b my-new-feature`)
+3. Haz un commit de tus cambios (`git commit -am 'Add some feature'`)
+4. Empuja los cambios a la rama(`git push origin my-new-feature`)
+5. Crea un nuevo Pull Request.

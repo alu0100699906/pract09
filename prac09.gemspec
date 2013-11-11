@@ -7,10 +7,10 @@ Gem::Specification.new do |spec|
   spec.name          = "prac09"
   spec.version       = Prac09::VERSION
   spec.authors       = ["Leonor Priego","Carlos Martin"]
-  spec.email         = ["alu0100699906@ull.edu.es"]
+  spec.email         = ["alu0100699906@ull.edu.es","alu0100702293@ull.edu.es"]
   spec.description   = %q{Clases que permiten gestionar matrices densas y dispersas de manera distinta}
   spec.summary       = %q{Aplicación para trabajar con matrices densas y dispersas}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/alu0100699906/pract09"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -20,4 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "guard-rspec"
+  spec.add_development_dependency "guard-bundler"
 end

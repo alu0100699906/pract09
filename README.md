@@ -29,3 +29,15 @@ Si quieres usar esta gema en tu aplicación Ruby, incluye el fichero "pract09"
 3. Haz un commit de tus cambios (`git commit -am 'Add some feature'`)
 4. Empuja los cambios a la rama(`git push origin my-new-feature`)
 5. Crea un nuevo Pull Request.
+
+## Documentación
+
+### Herencia de clases
+
+                clase Matriz            //clase base
+            .________|______.   
+            ↓               ↓   
+    clase Mdispersa     clase Mdensa    //clases derivadas
+        
+La clase Matriz contendrá la implementacion de unos métodos generales para las operaciones +, -, *, to_s (método que pasa a una cadena de caracteres). Las clases derivadas implementarán para cada una los métodos de comparación y de acceso ([]=, []) ya que éstos tienen funcionamientos distintos debido a cómo almacena la información cada una de las clases.
+                    

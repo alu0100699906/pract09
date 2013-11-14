@@ -1,12 +1,16 @@
-require 'fraccion'
+require 'prac09/fraccion'
 class Matriz
  
-##########################hay que ponerle una condicion, si tiene mas de 60 ceros, construya una dispersa, si no una densa
-        def initialize(filas, columnas)
-            @filas = filas
-	    @columnas = columnas    
-        end
-###########################	
+	def initialize(filas, columnas, *elementos)
+		@filas = filas
+		@columnas = columnas
+		if (((elementos.count(0)*100)/(filas*columnas)) >= 60) # Matriz dispersa
+		else
+			MatrizDispersa.new (filas,columnas,elementos)
+		end
+	    
+	end
+
 
 
 	#get filas
@@ -83,5 +87,25 @@ class Matriz
                         return matrizresultado
                 end
         end
+        
+       
+	def ==(object)
+		if ((object.instance_of?(Matriz) == true)&& (@filas == object.filas) && (@columnas == object.columnas))
+			i = 0
+			while (i < @filas) do
+				j = 0
+				while (j < @columnas) do
+					if (@matriz[i][j] == object[i,j]) #comparamos elemento a elemento
+						es_igual = true
+					else 
+						return es_igual = false #si solo uno es distinto la funcion devuelve falso
+					end
+					j = j + 1
+				end
+				i = i + 1
+			end
+		end
+		return es_igual #si compara todos los elementos y son iguales devuelve verdadero
+	end
 
 end

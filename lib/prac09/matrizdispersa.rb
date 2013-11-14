@@ -75,25 +75,5 @@ class MatrizDispersa < Matriz
 		self = MatrizDispersa.new(@filas,@columnas,((3*@n_nonulo)+3),tuplas)
 	end
 
-
-
-       ##repasar implemeentacion#####
-	def == (object)
-		if ((object.is_a?(Matriz) == true) && (@filas == object.filas) && (@columnas == object.columnas))#tambien hay que mirar la longitud
-			i,j = 0,0
-			while i < object.filas
-				while j < object.columnas
-					ind=0
-					while ind<@n_nonulo		
-						if (@vfil[ind],@vcol[ind]==i,j)
-							##falta
-						end
-					end
-				end
-			end
-		end#end ==
-
-##quitar comentarios raros para que travis funcione
-
 end#end class
        

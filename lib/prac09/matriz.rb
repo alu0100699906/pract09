@@ -5,8 +5,9 @@ class Matriz
 		@filas = filas
 		@columnas = columnas
 		if (((elementos.count(0)*100)/(filas*columnas)) >= 60) # Matriz dispersa
-		else
 			MatrizDispersa.new (filas,columnas,elementos)
+		else
+			MatrizDensa.new (filas,columnas,elementos)
 		end
 	    
 	end

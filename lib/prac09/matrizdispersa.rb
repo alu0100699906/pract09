@@ -44,36 +44,52 @@ class MatrizDispersa < Matriz
 
 
 	def []= (i,j,nvalor) #setter
-		tuplas = Array.new(((3*@n_nonulo)+3))
-	
-		ind =0
-		index=0
-		while ind<N #iteramos en los elementos no nulos de la matriz dispersa
-		
-			if (i,j == @vfil,@vcol)
-				@vvalor==nvalor  #si encontramos que la matriz tiene esa posicion simplemente almacenamos el nuevo valor
-				return
+		if (i,j <= @filas,@columnas)
+			ind =0
+			index=0
+			while ind<N #iteramos en los elementos no nulos de la matriz dispersa
+			
+				if (i,j == @vfil,@vcol && nvalor != 0)
+					@vvalor == nvalor  #si encontramos que la matriz tiene esa posicion simplemente almacenamos el nuevo valor
+					return
+					
+				else if (i,j == @vfil,@vcol && nvalor = 0) #si el valor a almacenar en un elemento antes nonulo
+					velementos = Array.new((@filas*@columnas) )	#debemos crear una nueva matriz con un elemento no nulo nuevo
+					
+					x,y = 0
+					while x < @filas
+						while y < @columnas
+							if (x,y == i,j)
+								velementos[index] = nvalor #almacena el nuevo valor para la nueva matriz cero en este caso
+							else
+								velementos[index] = self[x,y] #almacena el re4sto de valores que no cambian
+							end
+							index += 1
+						end
+					end
+					
+					self = MatrizDispersa.new (@filas,@columnas, velementos)
+					return
+				end
+				ind += 1
 			end
 			
-			#almacenamos las tuplas por si necesitamos crear una nueva matriz
-			tuplas[index] = @vvalor[ind]
-			tuplas[index+1] = @vfil[ind]
-			tuplas[index+2] = @vcol[ind]
-			index += 3
-			#
-			
-			ind += 1
+			#si no se encuentra la posicion debemos crear una nueva matriz para que el vector aumente una posicion
+			x,y = 0
+			while x < @filas
+				while y < @columnas
+					if (x,y == i,j)
+						velementos[index] = nvalor #almacena el nuevo valor para la nueva matriz
+					else
+						velementos[index] = self[x,y] #almacena el re4sto de valores que no cambian
+					end
+					index += 1
+				end
+			end
+			self = MatrizDispersa.new(@filas,@columnas, velementos)
 		end
-		
-		#almacenamos por ultimo el valor que no podiamos insertar en esta matriz
-		tuplas[index] = nvalor
-		tuplas[index+1] = i
-		tuplas[index+2] = j
-		#
-		
-		#si no se encuentra la posicion debemos crear una nueva matriz para que el vector aumente una posicion
-		self = MatrizDispersa.new(@filas,@columnas,((3*@n_nonulo)+3),tuplas)
 	end
-
+	
 end#end class
        
+

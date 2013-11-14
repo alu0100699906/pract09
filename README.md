@@ -39,5 +39,5 @@ Si quieres usar esta gema en tu aplicación Ruby, incluye el fichero "pract09"
             ↓               ↓   
     clase Mdispersa     clase Mdensa    //clases derivadas
         
-La clase Matriz contendrá la implementacion de unos métodos generales para las operaciones +, -, *, to_s (método que pasa a una cadena de caracteres). Las clases derivadas implementarán para cada una los métodos de comparación y de acceso ([]=, []) ya que éstos tienen funcionamientos distintos debido a cómo almacena la información cada una de las clases.
+La clase Matriz contendrá la implementacion de unos métodos generales para las operaciones +, -, *, to_s, == (método que pasa a una cadena de caracteres). Las clases derivadas implementarán para cada una los métodos de comparación y de acceso ([]=, []) ya que éstos tienen funcionamientos distintos debido a cómo almacena la información cada una de las clases.
                     

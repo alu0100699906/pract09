@@ -1,20 +1,20 @@
 class MatrizDispersa < Matriz
 
-	def initialize (filas, columnas, N, *tuplas) 	
+	def initialize (filas, columnas, nonulo, *tuplas) 	
 	#N es el numero de elementos no nulos
-	#tuplas trataremos los datos asi: (3,0,1),(1,2,4),(5,4,6)...(2,6,7),(2,8,6)
-	# donde agrupamos de tres en tres,(v,i,j)vvalores,vfil, vcol
+	#tuplas 
+	# donde agrupamos de tres en tres vvalores vfil vcol
 
 		super(filas, columnas)
 
-		@n_nonulo = N
+		@n_nonulo = nonulo
 	
-		@vvalores = Array.new(N)
-		@vfil = Array.new(N)
-		@vcol = Array.new(N)
+		@vvalores = Array.new(nonulo)
+		@vfil = Array.new(nonulo)
+		@vcol = Array.new(nonulo)
 	
 		ind = 0
-		while (ind < (3*N))
+		while (ind < (3*nonulo))
 			if (tuplas[ind] != 0)
 				@vvalores[ind]=tuplas[ind]   #almacena el valor no nulo
 			end
@@ -28,24 +28,29 @@ class MatrizDispersa < Matriz
 	
 	end#end initialize
 
-	def [](x,y)
-		while (i<N)
-			if(@vfil[i]==x && @vcol[i]==y)
-				@vvalores[i]
+	def [](x,y) #getter
+		i = 0
+		while (i<@n_nonulo)
+			if(@vfil[i] == x && @vcol[i] == y) 	#si encuentra la posicion 
+				@vvalores[i]					#retorna el valor almacenado en ella
+			end
+			i += 1
+			if (i = @n_nonulo)					#si no hay mas posiciones ocupadas
+				return 0						#es que el elemento indice x y es nulo
 			end
 		end
-	end #end []
+	end #end 
 
 
 
-	def []= (i,j,nvalor)
-		* tuplas = Array.new(((3*@N)+3))
-		
+	def []= (i,j,nvalor) #setter
+		tuplas = Array.new(((3*@n_nonulo)+3))
+	
 		ind =0
 		index=0
 		while ind<N #iteramos en los elementos no nulos de la matriz dispersa
 		
-			if (i,j == @vfil,@vcol) do
+			if (i,j == @vfil,@vcol)
 				@vvalor==nvalor  #si encontramos que la matriz tiene esa posicion simplemente almacenamos el nuevo valor
 				return
 			end
@@ -67,27 +72,26 @@ class MatrizDispersa < Matriz
 		#
 		
 		#si no se encuentra la posicion debemos crear una nueva matriz para que el vector aumente una posicion
-		self = MatrizDispersa.new(@filas,@columnas,((3*@N)+3),tuplas)
+		self = MatrizDispersa.new(@filas,@columnas,((3*@n_nonulo)+3),tuplas)
 	end
 
 
 
        ##repasar implemeentacion#####
 	def == (object)
-
-		if ((object.instance_of?(MatrizDispersa) == true) && (@filas == object.filas) && (@columnas == object.columnas))#tambien hay que mirar la longitud
-
-			m_res=MatrizDispersa.new(@filas,@columnas)
-		i=0
-		while i<@n_nonulo		
-			j = 0
-			while j<object.n_nonulo
-				if (@vfil[i],@vcol[i]==object.vfil[j],object.vcol[j])
-					m_res[]
+		if ((object.is_a?(Matriz) == true) && (@filas == object.filas) && (@columnas == object.columnas))#tambien hay que mirar la longitud
+			i,j = 0,0
+			while i < object.filas
+				while j < object.columnas
+					ind=0
+					while ind<@n_nonulo		
+						if (@vfil[ind],@vcol[ind]==i,j)
+							##falta
+						end
+					end
 				end
 			end
-		end
-	end#end ==
+		end#end ==
 
 ##quitar comentarios raros para que travis funcione
 

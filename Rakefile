@@ -8,7 +8,7 @@ task :default => :spec
 
 desc "Ejecutamos las pruebas de rspec"
 task :spec do
-  sh "rspec spec/matriz_spec.rb --format documentation"
+  sh "rspec spec/matrices_spec.rb --format documentation"
 
 end
 
@@ -16,5 +16,5 @@ end
 
 desc "Ejecutamos las pruebas unitarias"
 task :test do
-  sh "ruby test/tc_matriz.rb"
+  sh "ruby test/tc_matrices.rb"
 end

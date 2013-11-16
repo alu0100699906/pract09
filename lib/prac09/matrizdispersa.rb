@@ -1,13 +1,15 @@
 class MatrizDispersa < Matriz
     
 	def initialize (filas, columnas, *velementos) 	
-
+		
 		super(filas, columnas)
 		
 		@vvalores = Array.new
 		@vfil = Array.new
 		@vcol = Array.new
 	        longitud=@filas*@columnas
+
+ 
 		ind = 0
 		while (ind < longitud)
 			if(velementos[ind]!=0)
@@ -19,13 +21,13 @@ class MatrizDispersa < Matriz
 				ind =ind+1
 			end
 		end
-	
+
 	end#end initialize
 
 
 	def [](x,y) #getter
 		ind = 0
-		while (ind < @vvalores.length)
+		while (ind < @vvalores.size)
 			if(@vfil[ind] == x && @vcol[ind] == y) 	#si encuentra la posicion 
 				return @vvalores[ind][ind]					#retorna el valor almacenado en ella
 			
@@ -41,7 +43,7 @@ class MatrizDispersa < Matriz
 		if (i<= @filas && j<=@columnas)
 			ind =0
 			index=0
-			while ind< @vvalores.lenght #iteramos en los elementos no nulos de la matriz dispersa
+			while ind< @vvalores.size #iteramos en los elementos no nulos de la matriz dispersa
 			
 				if (i == @vfil && j==@vcol && nvalor != 0)
 					@vvalor == nvalor  #si encontramos que la matriz tiene esa posicion simplemente almacenamos el nuevo valor

@@ -34,6 +34,7 @@
 		@matriz[i][j] = valor
 	end
 
+	
 
 
 end #end class

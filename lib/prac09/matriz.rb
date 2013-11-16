@@ -7,6 +7,15 @@ class Matriz
 		@columnas = columnas	 
 	end
        
+	def Matriz.constructor(filas, columnas, *velementos)
+		  longitud=filas*columnas
+
+	          if (((velementos.count(0)*100)/(longitud))>=60)
+			MatrizDispersa.new(filas,columnas, *velementos)
+           	  else 
+			MatrizDensa.new(filas, columnas, *velementos)
+		  end
+	end			
 
 	#get filas
 	def filas()
@@ -22,24 +31,22 @@ class Matriz
 	#operacion suma
 	def +(object)
 				#comprobamos que tea una matriz con las mismas filas y columnas
-                if ((object.instance_of?(Matriz) == true) && (@filas == object.filas) && (@columnas == object.columnas))
-                        matrizresultado = Matriz.new(@filas, @columnas)
+                if ( (@filas == object.filas) && (@columnas == object.columnas))
+                        matrizresultado = Array.new
                         i = 0
                         while (i < @filas) do
                                 j = 0
                                 while (j < @columnas) do
-                                        valorsumado = 0
-                                        matrizresultado[i,j] = @matriz[i][j] + object[i,j] # sumamos los valores ij de cada matriz
+                                        matrizresultado = (self[i,j] + object[i,j]) # sumamos los valores ij de cada matriz
                                         
                                         j = j + 1
                                 end
                                 i = i + 1
                         end
-                        return matrizresultado
+                        Matriz.constructor(@filas, @columnas, matrizresultado)   
                 end
-        end
 
-	
+	end
 
 	#operador resta
 	def -(object)
@@ -50,7 +57,7 @@ class Matriz
                                 j = 0
                                 while (j < @columnas) do
                                         valorsumado = 0
-                                        matrizresultado[i,j]= @matriz[i][j] - object[i,j] #se restan los elementos ij de las dos matrices
+                                        matrizresultado[i,j]= self[i,j] - object[i,j] #se restan los elementos ij de las dos matrices
                                         
                                         j = j + 1
                                 end
@@ -71,7 +78,7 @@ class Matriz
                                         k = 0
                                         matrizresultado[i,j]=0
                                         while (k < @columnas) do #itera en las columnas de la primera matriz y las filas de la segunda
-                                                aux = (@matriz[i][k] * object[k,j] + matrizresultado[i,j] )#formula del calculo del determinante
+                                                aux = (self[i,k] * object[k,j] + matrizresultado[i,j] )#formula del calculo del determinante
                                                 matrizresultado[i,j]=aux	#almacena el valor obtenido en la posicion ij
                                                 k = k + 1
                                         end
@@ -82,15 +89,14 @@ class Matriz
                         return matrizresultado
                 end
         end
-        
-       
+
 	def ==(object)
-		if ((object.instance_of?(Matriz) == true)&& (@filas == object.filas) && (@columnas == object.columnas))
+		if ((@filas == object.filas) && (@columnas == object.columnas))
 			i = 0
 			while (i < @filas) do
 				j = 0
 				while (j < @columnas) do
-					if (@matriz[i][j] == object[i,j]) #comparamos elemento a elemento
+					if (self[i,j] == object[i,j]) #comparamos elemento a elemento
 						es_igual = true
 					else 
 						return es_igual = false #si solo uno es distinto la funcion devuelve falso
@@ -102,5 +108,6 @@ class Matriz
 		end
 		return es_igual #si compara todos los elementos y son iguales devuelve verdadero
 	end
-
+        
+     
 end

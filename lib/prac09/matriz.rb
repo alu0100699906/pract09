@@ -1,6 +1,7 @@
 require 'prac09/fraccion'
 
 class Matriz
+	attr_reader :filas, :columnas
 
 	def initialize(filas, columnas)
 		@filas = filas
@@ -32,13 +33,14 @@ class Matriz
 	def +(object)
 				#comprobamos que tea una matriz con las mismas filas y columnas
                 if ( (@filas == object.filas) && (@columnas == object.columnas))
-                        matrizresultado = Array.new
+                        matrizresultado = Array.new(@filas*@columnas)
                         i = 0
+                        ind = 0
                         while (i < @filas) do
                                 j = 0
                                 while (j < @columnas) do
-                                        matrizresultado = (self[i,j] + object[i,j]) # sumamos los valores ij de cada matriz
-                                        
+                                        matrizresultado[ind]= (self[i,j] + object[i,j]) # sumamos los valores ij de cada matriz
+                                        ind = ind +1
                                         j = j + 1
                                 end
                                 i = i + 1
@@ -53,17 +55,17 @@ class Matriz
                 if ((object.instance_of?(Matriz) == true) && (@filas == object.filas) && (@columnas == object.columnas))
                         matrizresultado = Matriz.new(@filas, @columnas)
                         i = 0
+                        ind = 0
                         while (i < @filas) do
                                 j = 0
                                 while (j < @columnas) do
-                                        valorsumado = 0
-                                        matrizresultado[i,j]= self[i,j] - object[i,j] #se restan los elementos ij de las dos matrices
-                                        
+                                        matrizresultado[ind]= (self[i,j] - object[i,j]) # sumamos los valores ij de cada matriz
+                                        ind = ind +1
                                         j = j + 1
                                 end
                                 i = i + 1
                         end
-                        return matrizresultado
+                        Matriz.constructor(@filas,@columnas,matrizresultado)
                 end
         end
 	

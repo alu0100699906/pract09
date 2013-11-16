@@ -41,6 +41,17 @@ describe Matriz do
 			(@ma + @mz).should == @md
 			(@mg + @mb).should == @mo
 		end
+		it " getter y setter"do
+			@ma[1,2].should == 1
+			@ma[1,2]= 5
+			@ma[1,2].should == 5
+			
+			@mb[2,3].should == 1
+			@mb[1,2]= 5
+			@mb[1,2].should == 5
+			@mb[2,3].should == 1
+
+		end
 	
 	end
 	

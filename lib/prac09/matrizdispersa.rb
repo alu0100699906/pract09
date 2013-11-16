@@ -29,7 +29,7 @@ class MatrizDispersa < Matriz
 		ind = 0
 		while (ind < @vvalores.size)
 			if(@vfil[ind] == x && @vcol[ind] == y) 	#si encuentra la posicion 
-				return @vvalores[ind][ind]					#retorna el valor almacenado en ella
+				return @vvalores[ind]				#retorna el valor almacenado en ella
 			
 				ind += 1
 			else					#si no hay mas posiciones ocupadas
@@ -46,7 +46,7 @@ class MatrizDispersa < Matriz
 			while ind< @vvalores.size #iteramos en los elementos no nulos de la matriz dispersa
 			
 				if (i == @vfil && j==@vcol && nvalor != 0)
-					@vvalor == nvalor  #si encontramos que la matriz tiene esa posicion simplemente almacenamos el nuevo valor
+					@vvalor[ind] == nvalor  #si encontramos que la matriz tiene esa posicion simplemente almacenamos el nuevo valor
 					return
 					
 				else if (i == @vfil && j==@vcol && nvalor == 0) #si el valor a almacenar en un elemento antes nonulo
@@ -58,13 +58,13 @@ class MatrizDispersa < Matriz
 							if (x == i && y==j)
 								velementos[index] = nvalor #almacena el nuevo valor para la nueva matriz cero en este caso
 							else
-								velementos[index] = matri[x,y] #almacena el resto de valores que no cambian
+								velementos[index] = self[x,y] #almacena el resto de valores que no cambian de esta misma matriz
 							end
 							index += 1
 						end
 					end
 					
-					matri = MatrizDispersa.new(@filas,@columnas, @velementos)
+					MatrizDispersa.new(@filas,@columnas, @velementos)
 					return
 				end
 				ind += 1

@@ -1,18 +1,18 @@
 class MatrizDispersa < Matriz
     
-	def initialize (filas, columnas, velementos) 	
+	def initialize (filas, columnas, *velementos) 	
 
 		super(filas, columnas)
-
-		@vvalores = Array.new()
-		@vfil = Array.new()
-		@vcol = Array.new()
+		
+		@vvalores = Array.new
+		@vfil = Array.new
+		@vcol = Array.new
 	        longitud=@filas*@columnas
 		ind = 0
 		while (ind < longitud)
-			if(@velementos[ind]!=0)
+			if(velementos[ind]!=0)
 
-				@vvalores=@velementos[ind]
+				@vvalores=velementos[ind]
 				@vfil=(ind/@columnas)
 				@vcol=(ind%@columnas)
 
@@ -25,9 +25,9 @@ class MatrizDispersa < Matriz
 
 	def [](x,y) #getter
 		ind = 0
-		while (ind<@vvalores.length)
+		while (ind < @vvalores.length)
 			if(@vfil[ind] == x && @vcol[ind] == y) 	#si encuentra la posicion 
-				return @vvalores[ind]					#retorna el valor almacenado en ella
+				return @vvalores[ind][ind]					#retorna el valor almacenado en ella
 			
 				ind += 1
 			else					#si no hay mas posiciones ocupadas

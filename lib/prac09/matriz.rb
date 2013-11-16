@@ -1,15 +1,10 @@
 require 'prac09/fraccion'
+
 class Matriz
- 
-	def initialize(filas, columnas, elementos)
+
+	def initialize(filas, columnas)
 		@filas = filas
 		@columnas = columnas	 
-
-		if (((elementos.count(0)*100)/(@filas*@columnas)) >= 60)
-			MatrizDispersa.new(@filas,@columnas,@elementos)
-		else
-			MatrizDensa.new(@filas,@columnas,@elementos)
-		end   
 	end
        
 

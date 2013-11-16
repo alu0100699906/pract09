@@ -12,6 +12,7 @@ describe Matriz do
                 @mc = Matriz.constructor(3,3,[8,8,4,5,4,7,1,2,9])
 		@mb = Matriz.constructor(3,3,[0,0,0,0,0,1,0,0,0])
 		@mg = Matriz.constructor(3,3,[0,0,0,0,0,1,0,0,0])
+		@mo = Matriz.constructor(3,3,[0,0,0,0,0,2,0,0,0])
 		@fa = Fraccion.new(1,2)
 	end
 
@@ -34,6 +35,11 @@ describe Matriz do
 
 		it " igualdad dispersa "do
 			@mb.should == @mg
+		end
+	
+		it " suma " do
+			(@ma + @mz).should == @md
+			(@mg + @mb).should == @mo
 		end
 	
 	end

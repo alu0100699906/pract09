@@ -52,6 +52,12 @@ describe Matriz do
 			@mb[2,3].should == 1
 
 		end
+		it " to_s"do
+			@ma.to_s
+			puts "#{@ma.to_s}"
+			@mb.to_s
+
+		end
 	
 	end
 	

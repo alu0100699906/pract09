@@ -111,5 +111,14 @@ class Matriz
 		return es_igual #si compara todos los elementos y son iguales devuelve verdadero
 	end
         
-     
+    def to_s()
+		i,j = 0,0
+		while i<@filas
+			while j<@columnas
+				"#{self[i,j]} "
+				j += 1
+			end
+			i += 1
+		end
+    end 
 end

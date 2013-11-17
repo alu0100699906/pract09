@@ -26,7 +26,7 @@
 
         #get elemento i,j
 	def [](i,j)
-		@matriz[i][j]
+		return @matriz[i][j]
 	end
 
 	#set elemento i,j

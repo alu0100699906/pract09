@@ -129,6 +129,20 @@ class Matriz
                 end
         end
  
+	def max()
+		maximo = 0 # maximo provisional
+		i, j = 0,0
+		while i<=@filas
+			while j<=@columnas
+				if (self[i,j]>maximo) #si el valor es mayor que el provisional almacena el nuevo
+					maximo = self[i,j]
+				end
+				j += 1;
+			end
+			i += 1;
+		end
+		return maximo
+	end
                      
   
   	def coerce(object)

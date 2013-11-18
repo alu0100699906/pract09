@@ -86,6 +86,11 @@ describe Matriz do
 
 
 		end
+		it " maximo y minimo"do
+			@mq.max.should == 4
+			@md.max.should == 4
+
+		end
 	
 	end
 	

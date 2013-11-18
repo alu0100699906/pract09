@@ -143,6 +143,21 @@ class Matriz
 		end
 		return maximo
 	end
+	
+	def min()
+		minimo = 0 # maximo provisional
+		i, j = 0,0
+		while i<=@filas
+			while j<=@columnas
+				if (self[i,j]<minimo) #si el valor es mayor que el provisional almacena el nuevo
+					minimo = self[i,j]
+				end
+				j += 1;
+			end
+			i += 1;
+		end
+		return minimo
+	end
                      
   
   	def coerce(object)

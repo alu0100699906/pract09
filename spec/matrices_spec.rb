@@ -79,6 +79,11 @@ describe Matriz do
 			@mc[1,2]= 5
 			@mq[0,1].should == 4
 		
+			@mb[1,2].should == 1
+			@mb[0,0]= 5
+			@mb[0,0].should == 5
+			
+
 
 		end
 	

@@ -158,6 +158,23 @@ class Matriz
 		end
 		return minimo
 	end
+	
+	def to_s
+		string= "[" ##corchete de matriz
+		
+		fil=0
+		while (fil<@filas)
+			string = string + "[" #corchete de fila
+			col=0
+			while (col<@columnas)
+				string = string + "#{self[fil,col]}" + ","
+				col += 1
+			end
+			string = string + "]" #cerramos el corchete de fila
+			fil += 1
+		end
+		string = string +"]" ##cerramos el corchete de matriz
+	end
                      
   
   	def coerce(object)

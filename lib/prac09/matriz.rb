@@ -175,6 +175,9 @@ class Matriz
 			end
 			string = string + "]" #cerramos el corchete de fila
 			fil += 1
+			if (fil < @filas)
+				string = string + ","
+			end
 		end
 		string = string +"]" ##cerramos el corchete de matriz
 	end

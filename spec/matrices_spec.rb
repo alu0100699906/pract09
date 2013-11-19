@@ -8,67 +8,38 @@ describe Matriz do
 		@ma = Matriz.constructor(2,2,[1,1,2,2])
 		@mz = Matriz.constructor(2,2,[1,1,2,2])
 		@md = Matriz.constructor(2,2,[2,2,4,4])
-		@mc = Matriz.constructor(3,3,[8,8,4,5,4,7,1,2,9]) 
-		@msum2 = Matriz.constructor(2,2,[3,1,2,2])
+		@dis = Matriz.constructor(2,2,[2,0,0,0])
 
 		@mb = Matriz.constructor(3,3,[0,0,0,0,0,1,0,0,0])
 		@mg = Matriz.constructor(3,3,[0,0,0,0,0,1,0,0,0])
 		@mo = Matriz.constructor(3,3,[0,0,0,0,0,2,0,0,0])
 		@mp = Matriz.constructor(3,3,[1,2,3,0,0,0,0,0,4])
 		@mq = Matriz.constructor(3,3,[2,4,0,0,0,0,2,0,0])
-		@mr = Matriz.constructor(3,3,[3,6,3,0,0,0,2,0,4])
-		@mul = Matriz.constructor(3,3,[6,12,18,12,24,36,18,36,54])
-
+			
 		@fa = Fraccion.new(1,2)
 		@fb = Fraccion.new(3,4)
 		@fc = Fraccion.new(5,6)
 		@fd = Fraccion.new(7,8)
 		@ra = Fraccion.new(11,8)
 		@ro = Fraccion.new(19,12)
-		@rb = Fraccion.new(33,32)
-		@rc = Fraccion.new(55,48)
-		@rd = Fraccion.new(89,64)
-
-		@sa = Fraccion.new(5,2)
-		@sb = Fraccion.new(11,4)
-		@sc = Fraccion.new(29,6)
-		@sd = Fraccion.new(39,8)
-		@sum1 = Matriz.constructor(2,2,[@sa,@fb,@fc,@fd])
-		@sum = Matriz.constructor(2,2, [@sa,@sb,@sc,@sd])
-		@dis = Matriz.constructor(2,2, [2,0,0,0])
+		
 		@a = Matriz.constructor(2,2, [@fa,@fb,@fc,@fd])
 		@b = Matriz.constructor(2,2,[@fd, @fc, @fb, @fa])
 		@c = Matriz.constructor(2,2,[@ra,@ro,@ro,@ra])
-		@d = Matriz.constructor(2,2,[@ra,@rb,@rc,@rd])
-		@e = Matriz.constructor(2,2,[@fd,@rb,@rc,@rd])
-
+		
 		@pro1 = Matriz.constructor(3,3,[1,1,1,2,2,2,3,3,3])
                 @pro2 = Matriz.constructor(3,3,[1,2,3,1,2,3,1,2,3])
-                @pro3 = Matriz.constructor(3,3,[3,6,9,6,12,18,9,18,27])
-
+ 
 		@multip = Matriz.constructor(3,2,[2,3,0,1,0,3])
 		@multip1 = Matriz.constructor(2,4,[0,1,0,0,7,0,2,0])#dispersa
-		@multip2 = Matriz.constructor(3,4,[21,2,6,0,7,0,2,0,21,0,6,0])
 		
 		@l1=Matriz.constructor(2,2,[0,0,0,1])
 		@l2=Matriz.constructor(2,2,[0,1,0,0])
-		@l3=Matriz.constructor(2,2,[0,0,0,0])
 
 		@l4=Matriz.constructor(3,3,[0,1,2,1,0,0,0,0,0])
 		@l5=Matriz.constructor(3,3,[2,0,2,2,0,0,0,0,0])
-		@l6=Matriz.constructor(3,3,[2,0,0,2,0,2,0,0,0])
 	
-		@fff=Fraccion.new(4,3)
-		@ff1=Fraccion.new(13,8)
-		@ff2=Fraccion.new(8,3)
-		@ff3=Fraccion.new(13,4)
-		@resultado = Matriz.constructor(2,2,[@fff,@ff1,@ff2,@ff3])
-
-		@ff4=Fraccion.new(0,4)
-		@ff5=Fraccion.new(3,4)
-		@ff6=Fraccion.new(0,24)
-		@ff7=Fraccion.new(7,8)
-		@resultado2 = Matriz.constructor(2,2,[@ff4,@ff5,@ff6,@ff7])
+	
 	end
 
 	 describe "# pruebas " do
@@ -99,29 +70,32 @@ describe Matriz do
 		end
 	
 		it " suma " do
+
 			(@ma + @mz).should == @md #suma densas
 			(@mg + @mb).should == @mo #suma dispersas
-			(@mp + @mq).should == @mr #suma dispersas
-			(@a + @md).should == @sum #suma racional con densa	
-			(@a + @dis).should == @sum1 #suma racional con dispersa
-			(@dis+ @a).should == @sum1 #suma dispersa con racional
-			(@ma + @dis).should == @msum2 #suma dispersa con densa
-		end
+			(@mp + @mq).to_s.should == ('[[3,6,3],[0,0,0],[2,0,4]]') #suma dispersas
+			(@a + @md).to_s.should == ('[[5/2,11/4],[29/6,39/8]]')#suma racional con densa	
+			(@a + @dis).to_s.should ==('[[5/2,3/4],[5/6,7/8]]') #suma racional con dispersa
+			(@dis+ @a).to_s.should == ('[[5/2,3/4],[5/6,7/8]]') #suma dispersa con racional
+			(@ma + @dis).to_s.should == ('[[3,1],[2,2]]') #suma dispersa con densa
+
+		end	
 		
 		it "resta" do
 			(@md -@mz).should eq(@ma)
 			(@mo - @mg).should eq(@mb)
 		end
 
+	
 		 it " producto "do
-			(2*@pro3).should == @mul
-			(@ma * @a).should == @resultado  
-			(@a * @l1).should == @resultado2
-                        ( @a * @a ).should == @e #multiplica 2 racionales
-                        (@pro1 * @pro2).should == @pro3
-			(@multip * @multip1).should ==(@multip2) #multiplica densa con dispersa
-			(@l1*@l2).should ==@l3 #multiplica dispersas
-			(@l4*@l5).should ==@l6 #multiplica dispersas
+			(2*@pro1).to_s.should ==('[[2,2,2],[4,4,4],[6,6,6]]')
+			(@ma * @a).to_s.should == ('[[4/3,13/8],[8/3,13/4]]') 
+			(@a * @l1).to_s.should == ('[[0/4,3/4],[0/24,7/8]]')
+                        ( @a * @a ).to_s.should == ('[[7/8,33/32],[55/48,89/64]]') #multiplica 2 racionales
+                        (@pro1 * @pro2).to_s.should == ('[[3,6,9],[6,12,18],[9,18,27]]')
+			(@multip * @multip1).to_s.should ==('[[21,2,6,0],[7,0,2,0],[21,0,6,0]]') #multiplica densa con dispersa
+			(@l1*@l2).to_s.should ==('[[0,0],[0,0]]') #multiplica dispersas
+			(@l4*@l5).to_s.should ==('[[2,0,0],[2,0,2],[0,0,0]]') #multiplica dispersas
                 end
 
 		it " getter y setter"do
@@ -129,10 +103,11 @@ describe Matriz do
 			@ma[0,1]= 2 
 			@ma[0,1].should == 2
 			
-			@mc[0,0].should == 8
-			@mc[1,2]= 5
+			@multip[0,0].should == 2
+			@multip[1,2]= 5
 			@mq[0,1].should == 4
 		
+
 			@mb[1,2].should == 1
 			@mb[0,0]= 5
 			@mb[0,0].should == 5
@@ -143,7 +118,7 @@ describe Matriz do
 		it " maximo y minimo"do
 			@mq.max.should == 4
 			@md.max.should == 4
-			@mr.max.should == 6
+
 
 		end
 	

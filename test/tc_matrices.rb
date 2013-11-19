@@ -55,6 +55,7 @@ class Test_Matrices < Test::Unit::TestCase
   #pruebas para el metodo producto
   	def test_producto
     		assert_equal(@pro3, (@pro1*@pro2))
+	        assert_equal((@ma * @a).to_s,('[[4/3,13/8],[8/3,13/4]]')) 
   	end
 
   #pruebas para los fallos
@@ -62,4 +63,7 @@ class Test_Matrices < Test::Unit::TestCase
     		assert_equal(@c,(@a+@b))
   	end
     
+	def test_maximo_minimo
+		assert_equal(@mq.max,4)
+	end
 end

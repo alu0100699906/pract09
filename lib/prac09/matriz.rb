@@ -167,8 +167,11 @@ class Matriz
 			string = string + "[" #corchete de fila
 			col=0
 			while (col<@columnas)
-				string = string + "#{self[fil,col]}" + ","
+				string = string + "#{self[fil,col]}"
 				col += 1
+				if(col < @columnas)
+					string = string + ","
+				end
 			end
 			string = string + "]" #cerramos el corchete de fila
 			fil += 1

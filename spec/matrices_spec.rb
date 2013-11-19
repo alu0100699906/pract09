@@ -16,6 +16,7 @@ describe Matriz do
 		@mp = Matriz.constructor(3,3,[1,2,3,0,0,0,0,0,4])
 		@mq = Matriz.constructor(3,3,[2,4,0,0,0,0,2,0,0])
 		@mr = Matriz.constructor(3,3,[3,6,3,0,0,0,2,0,4])
+		@mul = Matriz.constructor(3,3,[6,12,18,12,24,36,18,36,54])
 
 		@fa = Fraccion.new(1,2)
 		@fb = Fraccion.new(3,4)
@@ -27,15 +28,25 @@ describe Matriz do
 		@rc = Fraccion.new(55,48)
 		@rd = Fraccion.new(89,64)
 
+		@sa = Fraccion.new(5,2)
+		@sb = Fraccion.new(11,4)
+		@sc = Fraccion.new(29,6)
+		@sd = Fraccion.new(39,8)
+
+		@sum = Matriz.constructor(2,2, [@sa,@sb,@sc,@sd])
 		@a = Matriz.constructor(2,2, [@fa,@fb,@fc,@fd])
 		@b = Matriz.constructor(2,2,[@fd, @fc, @fb, @fa])
 		@c = Matriz.constructor(2,2,[@ra,@ro,@ro,@ra])
+		@d = Matriz.constructor(2,2,[@ra,@rb,@rc,@rd])
 
+		@pro1 = Matriz.constructor(3,3,[1,1,1,2,2,2,3,3,3])
+                @pro2 = Matriz.constructor(3,3,[1,2,3,1,2,3,1,2,3])
+                @pro3 = Matriz.constructor(3,3,[3,6,9,6,12,18,9,18,27])
 		
 	end
 
 	 describe "# pruebas " do
-		
+
 		it "instanciacion de un racional" do
 			@fa = Fraccion.new(1,2)		
 			@fa.numerador.should == 1
@@ -64,12 +75,21 @@ describe Matriz do
 			(@ma + @mz).should == @md
 			(@mg + @mb).should == @mo
 			(@mp + @mq).should == @mr
+			(@a + @md).should == @sum #suma entera con racionales
 		end
 		
 		it "resta" do
 			(@md -@mz).should eq(@ma)
 			(@mo - @mg).should eq(@mb)
 		end
+
+		 it " producto "do
+			(2*@pro3).should == @mul 
+			#(@a * @pro2).should == @d #no funcionan 
+                        #( @a * @a ).should == @d
+                        (@pro1 * @pro2).should == @pro3
+                end
+
 		it " getter y setter"do
 			@mz[0,0].should == 1
 			@ma[0,1]= 2 
@@ -89,6 +109,7 @@ describe Matriz do
 		it " maximo y minimo"do
 			@mq.max.should == 4
 			@md.max.should == 4
+			@mr.max.should == 6
 
 		end
 	

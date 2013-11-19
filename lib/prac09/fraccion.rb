@@ -87,24 +87,17 @@ class Fraccion
     
     #metodo para calcular la multiplicacion de dos fracciones
     def *(object)
-        #multiplica numerador con numerador y denominador con denominador
-        if (object.instance_of?(Fraccion)==true)
-			Fraccion.new(@numerador*object.numerador,@denominador*object.denominador)
-		end	
-		if (object.instance_of?( Fixnum )==true)
-			Fraccion.new(@numerador*object,@denominador)
-		end
+        if(object.is_a?(Numeric))
+		object = Fraccion.new(object,1)
+	end
+	Fraccion.new(@numerador*object.numerador,@denominador*object.denominador)
     end 
 
     #metodo para calcular la division de dos fracciones
     def /(object)
         #multiplica numerador con numerador y denominador con denominador
-        if (object.instance_of?(Fraccion)==true)
 			Fraccion.new(@numerador*object.denominador,@denominador*object.numerador)
-		end	
-		if (object.instance_of?( Fixnum )==true)
-			Fraccion.new(@numerador,@denominador*object)
-		end
+			
         
     end 
      
@@ -122,6 +115,7 @@ class Fraccion
 	 resto  
      end
      
+	
      #Utilizamos el metodo del modulo Comparable para realizar operaciones comparacionales de fracciones
      def <=> (object)
           self.to_float<=>object.to_float    

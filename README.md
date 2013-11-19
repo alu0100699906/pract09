@@ -8,19 +8,12 @@ La Gema Prac09 consta de clases que nos permiten crear, gestionar y trabajar, de
 
 Como dato, cabe añadir que una matriz se considerará dispersa si tiene más de un 60% de ceros.
 
-## Instalación
+##Creación Gema
 
-Añade esta línea al Gemfile de tu aplicación:
-
-    gem 'prac09'
-
-Luego ejecuta:
-
-    $ bundle
-
-O instálalo tú mismo de esta forma:
-
-    $ gem install prac09
+Nombre de gema "pkg/matrices-0.0.1.gem"
+Creamos la Gema con el comando "gem build pkg/matrices-0.0.1.gem"
+Subimos la gema a la plataforma RubyGems.org (https://rubygems.org/gems/prac09) con el comando "gem push pkg/matrices-0.0.1.gem"
+Tras esto, instalamos la gema: "gem install prac09"
 
 ## Uso
 
@@ -44,4 +37,7 @@ Si quieres usar esta gema en tu aplicación Ruby, incluye el fichero "pract09"
     clase Mdispersa     clase Mdensa    //clases derivadas
         
 La clase Matriz contendrá la implementacion de unos métodos generales para las operaciones +, -, *, to_s, == (método que pasa a una cadena de caracteres). Las clases derivadas implementarán para cada una los métodos de comparación y de acceso ([]=, []) ya que éstos tienen funcionamientos distintos debido a cómo almacena la información cada una de las clases.
+
+
+
                     

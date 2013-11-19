@@ -112,12 +112,12 @@ class Matriz
 		elsif ((object.is_a?(Matriz)==true) && (@columnas==object.filas()))
 			i=0
                         matrizresultado = Array.new
-                        while (i < @filas) do 
+                        while (i < @filas)
                                 j = 0
-                                while (j < object.columnas()) do
+                                while (j < object.columnas())
                                         k = 0
                                         matrizresultado<<0
-                                        while (k < @columnas) do #itera en las columnas de la primera matriz y las filas de la segunda
+                                        while (k < @columnas) #itera en las columnas de la primera matriz y las filas de la segunda
                                                 matrizresultado[(matrizresultado.size)-1]= (matrizresultado.last + (self[i,k] * object[k,j]))
                                                 k = k + 1
                                         end
@@ -125,7 +125,7 @@ class Matriz
                                 end
                                 i = i + 1
                         end
-                        Matriz.constructor(@filas,object.columnas,matrizresultado)
+                        return Matriz.constructor(@filas,object.columnas,matrizresultado)
                 end
         end
  

@@ -88,13 +88,24 @@ class Fraccion
     #metodo para calcular la multiplicacion de dos fracciones
     def *(object)
         #multiplica numerador con numerador y denominador con denominador
-        Fraccion.new(@numerador*object.numerador,@denominador*object.denominador)
+        if (object.instance_of?(Fraccion)==true)
+			Fraccion.new(@numerador*object.numerador,@denominador*object.denominador)
+		end	
+		if (object.instance_of?( Fixnum )==true)
+			Fraccion.new(@numerador*object,@denominador)
+		end
     end 
 
     #metodo para calcular la division de dos fracciones
     def /(object)
         #multiplica numerador con numerador y denominador con denominador
-        Fraccion.new(@numerador*object.denominador,@denominador*object.numerador)
+        if (object.instance_of?(Fraccion)==true)
+			Fraccion.new(@numerador*object.denominador,@denominador*object.numerador)
+		end	
+		if (object.instance_of?( Fixnum )==true)
+			Fraccion.new(@numerador,@denominador*object)
+		end
+        
     end 
      
      #metodo para calcular el resto de la division de dos fracciones
@@ -137,4 +148,8 @@ class Fraccion
         aux=gcd(a,b)
         (a/aux)*b
      end
+
+  	def coerce(object)
+    		[self,object]
+  	end
 end
